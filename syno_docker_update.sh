@@ -526,7 +526,8 @@ define_update() {
             [ "${compose_version}" = "${target_compose_version}" ] ; then
             terminate_with_warning "Already on target version for Docker and Docker Compose"
         fi
-        if [[ "${target_docker_version}" == 28* && "${skip_iptables_modules}" = 'false' ]]; then
+        major="${target_docker_version%%.*}"
+        if [[ "$major" -ge 28 && "${skip_iptables_modules}" = 'false' ]]; then
           install_iptables_modules='true'
           total_steps=$((total_steps+1))
         fi
