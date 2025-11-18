@@ -8,9 +8,6 @@
     <br />
 </p>
 
-| :warning: **NOTE ABOUT DOCKER 29:** Docker v29 depends on elements of the linux kernel that are not present on Synology kernels. Docker v29+ won't run correctly on Synology (see [Issue](https://github.com/telnetdoogie/synology-docker/issues/43)), so at this point, even though the update might appear to work, containers may not run beyond **Docker Engine 28.5.2** |
-| --- |
-
 <!-- Badges -->
 <p align="center">
     <a href="https://github.com/telnetdoogie/synology-docker/commits/master" alt="Last commit">
