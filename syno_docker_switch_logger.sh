@@ -46,14 +46,25 @@ jq < ${DOCKERD_FILE}
 echo
 
 # Use jq to safely update the log-driver and merge new log-opts
+
+# add iptables=true
+#jq '
+#  .["group"] = "administrators" |
+#  .["log-driver"] = "local" |
+#  .["log-opts"] = {
+#    "max-file": "5",
+#    "max-size": "20m"
+#  } |
+#  .["iptables"] = true
+#' "$DOCKERD_FILE" > "$DOCKERD_FILE.tmp" && mv "$DOCKERD_FILE.tmp" "$DOCKERD_FILE"
+
 jq '
   .["group"] = "administrators" |
   .["log-driver"] = "local" |
   .["log-opts"] = {
     "max-file": "5",
     "max-size": "20m"
-  } |
-  .["iptables"] = true
+  } 
 ' "$DOCKERD_FILE" > "$DOCKERD_FILE.tmp" && mv "$DOCKERD_FILE.tmp" "$DOCKERD_FILE"
 
 # Output the new JSON file
